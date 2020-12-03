@@ -6,5 +6,6 @@
 $ npm install
 $ cd config
 $ mv config.dev.env config.env
+$ cd .. 
 $ npm run dev
 ```
