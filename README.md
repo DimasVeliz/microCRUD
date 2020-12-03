@@ -4,5 +4,7 @@
 
 ```
 $ npm install
-$ npm start
+$ cd config
+$ mv config.dev.env config.env
+$ npm run dev
 ```
