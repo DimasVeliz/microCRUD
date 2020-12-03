@@ -1,11 +1,11 @@
 
 
 const baseCRUDService = (Service)=>({
-    ...baseServiceGet(model),
-    ...baseServiceGetAll(model),
-    ...baseServiceCreate(model),
-    ...baseServiceUpdate(model),
-    ...baseServiceDelete(model)
+    ...baseServiceGet(Service),
+    ...baseServiceGetAll(Service),
+    ...baseServiceCreate(Service),
+    //...baseServiceUpdate(model),
+    //...baseServiceDelete(model)
 
 });
 
@@ -26,13 +26,14 @@ const baseServiceGet =(Service)=>({
 });
 
 const baseServiceGetAll =(Service)=>({
-    get: async (req,res)=>{
-        
+    getAll: async (req,res)=>{
         let response= await Service.getAll();
 
         if (response.error) {
             return res.status(response.statusCode).send(response);
         } else {
+           
+
             return res.status(200).send(response);
             
         }
@@ -42,8 +43,9 @@ const baseServiceGetAll =(Service)=>({
 });
 
 const baseServiceCreate =(Service)=>({
-    get: async (req,res)=>{
-        let {dataToInsert} = req.body;
+    create: async (req,res)=>{
+        let dataToInsert = req.body;
+        
         let response= await Service.create(dataToInsert);
 
         if (response.error) {
@@ -61,7 +63,7 @@ module.exports ={
     baseServiceGet,
     baseServiceGetAll,
     baseServiceCreate,
-    baseServiceUpdate,
-    baseServiceDelete,
+    //baseServiceUpdate,
+    //baseServiceDelete,
     baseCRUDService
 }

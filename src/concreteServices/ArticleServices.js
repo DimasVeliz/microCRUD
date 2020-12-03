@@ -1,8 +1,9 @@
 const {baseCRUD}= require('../genericCRUD/genericCRUDBase')
-const ArticleModel= require('../concreteModels/Article')
+const ArticleModel= require('../concreteModels/ArticleModel')
 
 const ArticleService ={
     ...baseCRUD(ArticleModel),
 };
 
-export default ArticleService;
+
+module.exports =  ArticleService;

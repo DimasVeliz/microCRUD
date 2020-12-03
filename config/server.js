@@ -31,4 +31,7 @@ if (process.env.NODE_ENV=='development') {
     server.use(morgan('dev'))
 }
 
+
+server.use('/articles',require('./routes'));
+
 module.exports= server;

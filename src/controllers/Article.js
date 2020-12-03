@@ -5,4 +5,5 @@ const ArticleController ={
     ...baseCRUDService(ArticleService),
 }
 
-export default ArticleController;
+
+module.exports =  ArticleController;

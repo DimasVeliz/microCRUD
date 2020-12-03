@@ -1,76 +1,79 @@
-const baseCRUD = (model)=>({
+const baseCRUD = (model) => ({
     ...baseGet(model),
     ...baseGetAll(model),
     ...baseCreate(model),
-    ...baseUpdate(model),
-    ...baseDelete(model)
+    //...baseUpdate(model),
+    //...baseDelete(model)
 
 });
 
-const baseGet =(model)=>({
-    get: async (id)=>{
+const baseGet = (model) => ({
+    get: async (id) => {
         try {
             let item = await model.findById(id);
             return {
-                error:false,
-                statusCode:200,
+                error: false,
+                statusCode: 200,
                 item
             };
         } catch (error) {
             return {
-                error:true,
-                statusCode:400,
-                error 
+                error: true,
+                statusCode: 400,
+                error
             };
         }
 
     }
 });
-const baseGetAll =(model)=>({
-    getAll: async ()=>{
+const baseGetAll = (model) => ({
+    getAll: async () => {
+        console.log('here');
+
         try {
-            let items = await model;
+            let items = await model.find();
             return {
-                error:false,
-                statusCode:200,
+                error: false,
+                statusCode: 200,
                 items
             };
         } catch (error) {
             return {
-                error:true,
-                statusCode:400,
-                error 
+                error: true,
+                statusCode: 400,
+                error
             };
         }
 
     }
 });
 
-const baseCreate =(model)=>({
-    create: async (dataToInsert)=>{
+const baseCreate = (model) => ({
+    create: async (dataToInsert) => {
         try {
             let items = await model.create(dataToInsert);
             return {
-                error:false,
-                statusCode:200,
+                error: false,
+                statusCode: 200,
                 items
             };
         } catch (error) {
             return {
-                error:true,
-                statusCode:500,
-                error 
+                error: true,
+                statusCode: 500,
+                error
             };
         }
 
     }
 });
 
-export default{
+
+module.exports = {
     baseGet,
     baseGetAll,
-    baseDelete,
-    baseUpdate,
+    //baseDelete,
+    //baseUpdate,
     baseCreate,
     baseCRUD
 }
