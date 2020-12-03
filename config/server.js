@@ -32,6 +32,6 @@ if (process.env.NODE_ENV=='development') {
 }
 
 
-server.use('/articles',require('./routes'));
+server.use('/api',require('./routes'));
 
 module.exports= server;
