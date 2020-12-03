@@ -1,7 +1,7 @@
 # This is a microservice that handles all the CRUD operations for a MongoDB database
 
 ## to run this app:
-
+... update the configuration file by specifing Port and MongoURI
 ```
 $ npm install
 $ cd config
