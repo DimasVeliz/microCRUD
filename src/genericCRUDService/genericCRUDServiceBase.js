@@ -11,7 +11,8 @@ const baseCRUDService = (Service)=>({
 
 const baseServiceGet =(Service)=>({
     get: async (req,res)=>{
-        let {id} = req.params;
+        let {id} = req.query;
+        
         let response= await Service.get(id);
 
         if (response.error) {
@@ -27,6 +28,8 @@ const baseServiceGet =(Service)=>({
 
 const baseServiceGetAll =(Service)=>({
     getAll: async (req,res)=>{
+        
+
         let response= await Service.getAll();
 
         if (response.error) {

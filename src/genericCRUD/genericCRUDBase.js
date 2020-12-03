@@ -28,7 +28,7 @@ const baseGet = (model) => ({
 });
 const baseGetAll = (model) => ({
     getAll: async () => {
-        console.log('here');
+       
 
         try {
             let items = await model.find();
