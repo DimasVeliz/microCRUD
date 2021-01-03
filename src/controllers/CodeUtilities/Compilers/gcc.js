@@ -16,7 +16,7 @@ const compileGCC = async (file_name) => {
 
                 return err;
             });
-    console.log(infoDockerRun);
+    
 
 
 
