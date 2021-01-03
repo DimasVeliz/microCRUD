@@ -1,23 +1,26 @@
 
 const compile = require("./CodeUtilities/Compilingfactory");
-const executeCode= require("./CodeUtilities/executerLinuxMachine");
+const executeCode = require("./CodeUtilities/executerLinuxMachine");
 
 
-const codeUpload= async (req, res) => {
+const CodeController = async (req, res) => {
 
-    let codeData= req.codeData;
-
+    let codeData = 'C/C++';
+    
     //download file
-    let file_name="";
+    let file_name = "probando";
     //
-    const compilationDetails = compile(codeData.language,file_name);
+    const compilationDetails = await compile(codeData, file_name);
+    console.log(compilationDetails);
 
+    ////
+    //let problem = ProblemModel.findOne(codeData.id_problem);
+    //let dataset= problem.dataset;
     //
-    let problem = ProblemModel.findOne(codeData.id_problem);
-    let dataset= problem.dataset;
+    //const runtimeDetails = executeCode(file_name,dataset);
+    //
+    //console.log(runtimeDetails);
 
-    const runtimeDetails = executeCode(file_name,dataset);
-
-    console.log(runtimeDetails);
+    res.status(200).send({ message: "thanks" });
 };
-module.exports = codeUpload;
+module.exports = CodeController;
