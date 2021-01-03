@@ -3,9 +3,11 @@ const router = express.Router()
 const ProblemController = require('../src/controllers/Problem');
 
 const CodeController = require('../src/controllers/Code');
+const upload = require("../src/controllers/CodeUtilities/UploadManager");
+
 
 //uploadcode
-router.post('/code',CodeController);
+router.post('/code',upload.single("my_file"),CodeController);
 
 
 //problems

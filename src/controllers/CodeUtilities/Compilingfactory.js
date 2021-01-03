@@ -7,10 +7,10 @@ const factory ={
     '.Net':compileDotNet
 };
 
-const compileCode = async(language,file_name)=>{
+const compileCode = async(language,file_name,extension)=>{
 
     const selected= factory[language];
-    return await selected(file_name);
+    return await selected(file_name,extension);
 };
 
 module.exports= compileCode;
