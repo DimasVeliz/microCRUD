@@ -1,11 +1,18 @@
 const shellExec = require('shell-exec')
 
-const executeCode = async(file_name, problem_dataset)=>{
+const executeCode = async (file_name, problem_dataset=null) => {
 
-    
-    let commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "$PWD/src/public/uploads":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name} <${problem_dataset}`
-   // let commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "$PWD/src/public/uploads":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ls`
-   
+    let exec_path = process.env.EXEC_PATH;
+
+    let commandRun = null;
+    if (problem_dataset) {
+        commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "${exec_path}":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name} < ${exec_path}/${problem_dataset}`
+    } else {
+        commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "${exec_path}":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name}`
+    }
+
+
+
     let infoDockerRun = await shellExec(commandRun).then((message) => {
 
         return message;
@@ -15,11 +22,11 @@ const executeCode = async(file_name, problem_dataset)=>{
 
                 return err;
             });
-    
+
 
 
 
     return infoDockerRun;
 };
 
-module.exports= executeCode;
+module.exports = executeCode;
