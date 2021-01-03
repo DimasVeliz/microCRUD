@@ -1,8 +1,8 @@
 const {baseCRUD}= require('../genericCRUD/genericCRUDBase')
-const BookModel= require('../concreteModels/BookModel')
+const ProblemModel= require('../concreteModels/ProblemModel')
 
 const BookServices ={
-    ...baseCRUD(BookModel),
+    ...baseCRUD(ProblemModel),
 };
 
 
