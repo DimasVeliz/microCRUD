@@ -6,7 +6,7 @@ const executeCode = async (file_name, problem_dataset=null) => {
 
     let commandRun = null;
     if (problem_dataset) {
-        commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "${exec_path}":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name} < ${exec_path}/${problem_dataset}`
+        commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "${exec_path}":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name} < ${problem_dataset}`
     } else {
         commandRun = `echo "dimas" | sudo -S docker run -i --rm -v "${exec_path}":/usr/src/myapp -w /usr/src/myapp ubuntu:18.04 ./${file_name}`
     }

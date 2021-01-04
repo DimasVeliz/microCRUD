@@ -2,7 +2,7 @@ const path = require('path');
 const ProblemModel = require('../concreteModels/ProblemModel');
 const compile = require("./CodeUtilities/Compilingfactory");
 const executeCode = require("./CodeUtilities/executerLinuxMachine");
-
+const {createInputFile,deleteInputFile} = require("./CodeUtilities/CreateInputFile");
 
 const CodeController = async (req, res) => {
 
@@ -40,18 +40,19 @@ const CodeController = async (req, res) => {
 
     if (!problem) {
         return res.status(400).send("Problem not found");
-
     }
     let dataset = problem.solutionExample;
 
-    console.log(dataset);
 
+    //building testCases in a file
+    let test_info= await createInputFile(dataset,file_name);
+    if (test_info.error) {
+        return res.status(400).send("Couldnt create file with test");        
+    }
 
     //running the code in a virtual container
-    //const runtimeDetails = await executeCode(file_name,dataset=codeData.dataset);
-    //
-
-    //console.log(runtimeDetails);
+    const runtimeDetails = await executeCode(file_name,dataset=test_info.test_path);
+    console.log(runtimeDetails);
 
     res.status(200).send({ message: "thanks" });
 };

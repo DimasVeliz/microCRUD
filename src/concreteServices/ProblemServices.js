@@ -1,9 +1,9 @@
 const {baseCRUD}= require('../genericCRUD/genericCRUDBase')
 const ProblemModel= require('../concreteModels/ProblemModel')
 
-const BookServices ={
+const ProblemServices ={
     ...baseCRUD(ProblemModel),
 };
 
 
-module.exports =  BookServices;
+module.exports =  ProblemServices;
